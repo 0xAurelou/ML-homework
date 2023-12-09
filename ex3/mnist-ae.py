@@ -3,6 +3,7 @@ from keras.datasets import mnist
 from keras import layers
 import numpy as np
 import matplotlib.pyplot as plt
+import PIL
 
 (x_train, _), (x_test, _) = mnist.load_data()
 
@@ -74,4 +75,24 @@ for i in range(n):
     plt.gray()
     ax.get_xaxis().set_visible(False)
     ax.get_yaxis().set_visible(False)
+plt.show()
+
+def preprocess_and_predict(image_path):
+    # Load and preprocess the image
+    image = PIL.Image.open(image_path).convert("L")
+    image = image.resize((28, 28))
+    image = np.array(image) # Normalize to [0, 1]
+    image = image.reshape(1, 28, 28, 1)  # Reshape to match model input shape
+    return image
+
+handwritten = preprocess_and_predict('images/1.jpg')
+
+# Flatten the handwritten image before prediction
+encoded_handwritten = encoder.predict(handwritten.reshape(1, 784))  # Flatten to (1, 784)
+
+decoded_handwritten = decoder.predict(encoded_handwritten)
+
+plt.imshow(handwritten.reshape(28, 28), cmap='gray')
+plt.show()
+plt.imshow(decoded_handwritten.reshape(28, 28), cmap='gray')
 plt.show()
