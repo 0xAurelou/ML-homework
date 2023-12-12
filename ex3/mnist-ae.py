@@ -81,7 +81,7 @@ def preprocess_and_predict(image_path):
     # Load and preprocess the image
     image = PIL.Image.open(image_path).convert("L")
     image = image.resize((28, 28))
-    image = np.array(image) # Normalize to [0, 1]
+    image = np.array(image) 
     image = image.reshape(1, 28, 28, 1)  # Reshape to match model input shape
     return image
 
