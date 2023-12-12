@@ -54,10 +54,15 @@ plt.show()
 
 # Preprocess and predict function
 def preprocess_and_predict(image_path, model):
-    # load and preprocess the image
+    # load and greyscale image
     image = PIL.Image.open(image_path).convert("L")
+    # Resize to 28x28
     image = image.resize((28, 28))
+    # Convert to numpy array
     image = np.array(image)
+    # plot the image
+    plt.imshow(image, cmap="gray")
+    plt.show()
     image = image.reshape((1, 28, 28, 1))  # Reshape to match model input shape
 
     # Predict the digit

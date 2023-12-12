@@ -49,26 +49,50 @@ model.save_weights('rnn')
 model.load_weights('rnn')
 model.evaluate(test_data)
 
-print(model.predict([
+print("The soundtrack added so much emotion to the story; it was beautifully composed")
+if(model.predict([
   "The soundtrack added so much emotion to the story; it was beautifully composed",
-]))
+]) > 0.5):
+  print("positive")
+else:
+  print("negative")
 
-print(model.predict([
+print("The cinematography was astounding and the art was beautiful" )
+if(model.predict([
   "The cinematography was astounding and the art was beautiful",
-]))
+]) > 0.5):
+  print("positive")
+else:
+  print("negative")
 
-print(model.predict([
+print("A true gem in the world of cinema; I can't wait to watch it again")
+if(model.predict([
   "A true gem in the world of cinema; I can't wait to watch it again",
-]))
+]) > 0.5):
+  print("positive")
+else:
+  print("negative")
 
-print(model.predict([
+print("I had high expectations, but the movie fell flat; it was disappointed")
+if(model.predict([
   "I had high expectations, but the movie fell flat; it was disappointed",
-]))
+]) > 0.5):
+  print("positive")
+else:
+  print("negative")
 
-print(model.predict([
+print("The dialogue felt forced, and the humor fell flat; it was cringe-worthy")
+if(model.predict([
   "The dialogue felt forced, and the humor fell flat; it was cringe-worthy",
-]))
+]) > 0.5):
+  print("positive")
+else:
+  print("negative")
 
-print(model.predict([
+print("A waste of time and money; the script was poorly written")
+if(model.predict([
   "A waste of time and money; the script was poorly written",
-]))
+]) > 0.5):
+  print("positive")
+else:
+  print("negative")
